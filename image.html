@@ -1,0 +1,49 @@
+
+<!DOCTYPE html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-sclae=1.0">
+    <title>Mon Projet</title>
+</head>
+
+<body>
+<input type="file" id="imageUpload" name="imageUpload" accept="image/*" onchange="afficherApercuImage()">
+<img id="apercuImage" src="#" alt="Aperçu de l'image" style="display: none; max-width: 100px; max-height: 100px;">
+<input type="week" id="w" name="w" min="2024-W01" max="2024-W52">
+<script>
+   function afficherApercuImage() {
+       var input = document.getElementById('imageUpload');
+       var apercu = document.getElementById('apercuImage');
+       var fichier = input.files[0];
+       var lecteur = new FileReader();       lecteur.onload = function (e) {
+           apercu.src = e.target.result;
+           apercu.style.display = 'block';
+       };       lecteur.readAsDataURL(fichier);
+   }
+</script><br>
+<input type="url" id="siteWebSecure" name="siteWebSecure" pattern="https://.*" placeholder="https://www.example.com" required>
+<br>
+<input type="email" id="emailDomaine" name="emailDomaine" pattern="^[a-zA-Z0-9._%+-]+@(example\.com|domaine\.com)$" placeholder="nom@exemple.com">
+<br>
+<input type="color" id="couleurPersonnalisee" name="couleurPersonnalisee" list="couleursCustom">
+<datalist id="couleursCustom">
+   <option style="background-color: #FF0000
+;"></option>
+   <option style="background-color: #00FF00
+;"></option>
+   <option style="background-color: #0000FF
+;"></option>
+</datalist><br>
+<input type="text" id="commentaireCompteur" name="commentaireCompteur" maxlength="100" oninput="compterCaracteres()">
+<span id="compteurCaracteres">0/100</span>
+<script>
+   function compterCaracteres() {
+       var champ = document.getElementById('commentaireCompteur');
+       var compteur = document.getElementById('compteurCaracteres');
+       compteur.textContent = champ.value.length + '/' + champ.maxLength;
+   }
+</script>
+</body>
+</html>
